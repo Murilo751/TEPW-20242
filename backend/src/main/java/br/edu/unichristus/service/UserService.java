@@ -53,4 +53,14 @@ public class UserService {
         return DozerConverter.parseObject(entity.get(), UserDTO.class);
     }
 
+    public UserLowDTO loginUser(UserDTO dto) {
+        var user = repository.findByLoginAndPassword(dto.getLogin(), dto.getPassword());
+        if(user == null) {
+            throw new CommonsException(HttpStatus.NOT_FOUND,
+                    "unichristus.backend.service.user.notfound.exception",
+                    "Crendenciais inválidas!");
+        }
+
+        return DozerConverter.parseObject(user, UserLowDTO.class);
+    }
 }

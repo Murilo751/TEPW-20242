@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,5 +53,10 @@ public class UserController {
     }
 
 
+    @Operation(summary = "Login usuário | role: [USER]", tags = "User")
+    @PostMapping("/auth/signin")
+    public ResponseEntity<?> loginUser(@RequestBody UserDTO user) {
+        return ResponseEntity.ok().body(service.loginUser(user));
+    }
 
 }
