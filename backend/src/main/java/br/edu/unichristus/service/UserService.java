@@ -34,9 +34,9 @@ public class UserService {
         return DozerConverter.parseObject(entityDTO, UserDTO.class);
     }
 
-    public List<UserLowDTO> findAll(){
+    public List<UserDTO> findAll(){
         return DozerConverter.parseListObjects(
-                repository.findAll(), UserLowDTO.class);
+                repository.findAll(), UserDTO.class);
     }
 
     public void delete(Long id){

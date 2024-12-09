@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public List<UserLowDTO> findAll(){
+    public List<UserDTO> findAll(){
         return service.findAll();
     }
 
